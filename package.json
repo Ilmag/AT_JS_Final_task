@@ -4,7 +4,9 @@
   "description": "Task description\r Launch URL: https://www.saucedemo.com/",
   "main": "index.js",
   "scripts": {
-    "test": "wdio run ./src/config/wdio.conf.js"
+    "pretest": "echo 'Generating feature file...' && node writeScenarioOutline.js",
+    "test": "wdio run ./src/config/wdio.conf.js",
+    "posttest": "echo 'Tests completed!'"
   },
   "keywords": [],
   "author": "",

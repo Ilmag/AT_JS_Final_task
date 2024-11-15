@@ -1,3 +1,8 @@
+/**
+ * Contains https://www.saucedemo.com/ selectors for login form,
+ * error mesages, and a method to open page. 
+ */
+
 class LoginPage {
     get inputUsername () {
         return $('#user-name');
@@ -11,22 +16,12 @@ class LoginPage {
         return $('#login-button');
     }
 
-    get password () {
-        return $('.login_password');
-    }
-
     get error () {
         return $('h3[data-test="error"]');
     }
 
     open () {
         return browser.url('/');
-    }
-
-    async login (username, password) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.loginBtn.click();
     }
 }
 

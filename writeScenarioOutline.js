@@ -2,6 +2,11 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * Retrieves accepted usernames and password
+ * from https://www.saucedemo.com/ and creates Scenario Outline in ./src/features/outline.feature
+ */
+
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -27,8 +32,6 @@ const path = require('path');
           | Username | Password |\n`;
 
     data.usernames.shift()
-
-    console.log(data)
 
     data.usernames.forEach(username => {
         featureContent += `          | ${username} | ${data.password} |\n`;
