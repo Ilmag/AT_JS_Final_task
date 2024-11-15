@@ -63,6 +63,13 @@ exports.config = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
+    outputDir: './logs', // Directory to store log files
+    reporters: ['spec', ['junit', {
+        outputDir: './logs/junit',
+        outputFileFormat: function(options) {
+            return `results-${options.cid}.xml`
+        }
+    }]],
     //
     // Set specific log levels per logger
     // loggers:
