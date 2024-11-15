@@ -11,10 +11,6 @@ class LoginPage {
         return $('#login-button');
     }
 
-    get usernames () {
-        return $('.login_credentials');
-    }
-
     get password () {
         return $('.login_password');
     }
