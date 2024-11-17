@@ -31,7 +31,7 @@ const path = require('path');
         Examples:
           | Username | Password |\n`;
 
-    data.usernames.shift()
+    data.usernames.shift();
 
     data.usernames.forEach(username => {
         featureContent += `          | ${username} | ${data.password} |\n`;

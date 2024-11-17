@@ -5,8 +5,8 @@
 
 class ProductsHeader {
     get products() {
-        return $('span[data-test="title"]')
+        return $('span[data-test="title"]');
     }
 }
 
-module.exports = ProductsHeader
+module.exports = ProductsHeader;
