@@ -64,12 +64,16 @@ exports.config = {
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
     outputDir: './logs', // Directory to store log files
-    reporters: ['spec', ['junit', {
-        outputDir: './logs/junit',
-        outputFileFormat: function(options) {
-            return `results-${options.cid}.xml`
-        }
-    }]],
+    reporters: [
+        'spec',
+        [
+            'allure', {
+                outputDir: './allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: false,
+            }
+        ]
+    ],
     //
     // Set specific log levels per logger
     // loggers:
@@ -132,7 +136,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    // reporters: [],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -261,8 +265,11 @@ exports.config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+    afterStep: async function (step, scenario, { error }) {
+        if(error){
+            await browser.takeScreenshot();
+        }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.
@@ -318,8 +325,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    // onComplete: function(exitCode, config, capabilities, results) {},
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
