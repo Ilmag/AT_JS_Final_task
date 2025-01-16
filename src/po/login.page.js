@@ -16,7 +16,7 @@ class LoginPage {
         return $('#login-button');
     }
 
-    get error () {
+    get loginError () {
         return $('h3[data-test="error"]');
     }
 

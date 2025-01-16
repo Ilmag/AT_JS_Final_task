@@ -6,7 +6,7 @@ const loginPage = new LoginPage();
 const productsHeader = new ProductsHeader();
 
 Then('I should get error message {string}', async (message) => {
-    const errorMessage = await loginPage.error.getText();
+    const errorMessage = await loginPage.loginError.getText();
     expect(errorMessage).toContain(message);
 });
 
