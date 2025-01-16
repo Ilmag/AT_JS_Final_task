@@ -3,10 +3,10 @@
  * for secondary header Products
  */
 
-class ProductsPage {
+class ProductsHeader {
     get products() {
-        return $('span[data-test="title"]')
+        return $('span[data-test="title"]');
     }
 }
 
-module.exports = ProductsPage
+module.exports = ProductsHeader;

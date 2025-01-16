@@ -1,6 +1,6 @@
 const { When } = require("@wdio/cucumber-framework");
-const LoginPage = require('./../po/login.page')
-const loginPage = new LoginPage()
+const LoginPage = require('./../po/login.page');
+const loginPage = new LoginPage();
 
 const clearInputField = async (element) => {
     const value = await element.getValue();
@@ -32,5 +32,5 @@ When('Clear the password input', async () => {
 })
 
 When('Click login button', async () => {
-    await loginPage.loginBtn.click()
+    await loginPage.loginBtn.click();
 });
