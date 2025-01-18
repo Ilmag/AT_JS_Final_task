@@ -1,13 +1,14 @@
 const { When } = require("@wdio/cucumber-framework");
 const LoginPage = require('./../po/login.page');
 const loginPage = new LoginPage();
+const clearInputField = require('../utils/clear_field')
 
-const clearInputField = async (element) => {
-    const value = await element.getValue();
-    const backspaces = new Array(value.length).fill('Backspace');
-    await element.click(); // Focus on the input field await browser.keys(backspaces);
-    await browser.keys(backspaces);
-};
+// const clearInputField = async (element) => {
+//     const value = await element.getValue();
+//     const backspaces = new Array(value.length).fill('Backspace');
+//     await element.click(); // Focus on the input field await browser.keys(backspaces);
+//     await browser.keys(backspaces);
+// };
 
 When('I type {string} and {string} in input fields', async (username, password) => {
     await loginPage.inputUsername.setValue(username);
