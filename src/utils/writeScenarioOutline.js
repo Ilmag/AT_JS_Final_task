@@ -18,24 +18,29 @@ const path = require('path');
         return { usernames, password };
     })
 
-    let featureContent = `
-    Feature: Test Login form with credentials by passing Username & Password
-      Background: Navigate to login page
-        Given I am on the login page
+    let featureContent =
+    `Feature: Test Login form with credentials by passing Username & Password
+  Background: Navigate to login page  
+    Given I am on the login page
     
-      Scenario Outline: Test login with different credentials
-        When I type "username" and "password" in input fields
-        And Click login button
-        Then I should navigate to Products page and page title should be "Swag Labs"
+  Scenario Outline: Test login with different credentials
+    When I type "username" and "password" in input fields
+    And Click login button
+    Then I should navigate to Products page and page title should be "Swag Labs"
             
-        Examples:
-          | Username | Password |\n`;
+    Examples:
+      | Username | Password |\n`;
 
     data.usernames.shift();
 
     data.usernames.forEach(username => {
-        featureContent += `          | ${username} | ${data.password} |\n`;
+        featureContent += `      | ${username} | ${data.password} |\n`;
     })
+
+    // const dirPath = path.join(__dirname, '../features');
+    // if (!fs.existsSync(dirPath)) {
+    //     fs.mkdirSync(dirPath, { recursive: true });
+    // }
 
     fs.writeFileSync('src/features/outline.feature', featureContent);
     console.log('Feature file generated successfully!');
