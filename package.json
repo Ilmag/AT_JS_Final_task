@@ -4,7 +4,7 @@
   "description": "Task description\r Launch URL: https://www.saucedemo.com/",
   "main": "index.js",
   "scripts": {
-    "pretest": "echo 'Generating feature file...' && node writeScenarioOutline.js",
+    "pretest": "echo 'Generating feature file...' && node src/utils/writeScenarioOutline.js",
     "test": "wdio run ./src/config/wdio.conf.js && allure generate ./allure-results --clean && allure open ./allure-report",
     "posttest": "echo 'Tests completed!'"
   },

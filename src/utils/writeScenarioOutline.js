@@ -37,12 +37,7 @@ const path = require('path');
         featureContent += `          | ${username} | ${data.password} |\n`;
     })
 
-    const dirPath = path.join(__dirname, '../features');
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
-    }
-
-    fs.writeFileSync(path.join(__dirname, 'src/features/outline.feature'), featureContent);
+    fs.writeFileSync('src/features/outline.feature', featureContent);
     console.log('Feature file generated successfully!');
 
     await browser.close();
